@@ -1,0 +1,12 @@
+export { Navbar } from "./Navbar";
+export { Hero } from "./Hero";
+export { Stats } from "./Stats";
+export { Features } from "./Features";
+export { FeaturesPreview } from "./FeaturesPreview";
+export { HowItWorks } from "./HowItWorks";
+export { HowItWorksPreview } from "./HowItWorksPreview";
+export { AppShowcase } from "./AppShowcase";
+export { About } from "./About";
+export { Testimonials } from "./Testimonials";
+export { CTA } from "./CTA";
+export { Footer } from "./Footer";
