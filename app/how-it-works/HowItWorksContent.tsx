@@ -259,7 +259,7 @@ export function HowItWorksContent() {
                   {/* Step number and icon */}
                   <div className="flex-shrink-0 relative z-10">
                     <motion.div
-                      className="w-14 h-14 rounded-2xl bg-black/5 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all duration-300"
+                      className="w-14 h-14 rounded-2xl bg-[#f0f0f0] flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all duration-300"
                       whileHover={{ scale: 1.05, rotate: 5 }}
                     >
                       <step.icon className="w-6 h-6" />

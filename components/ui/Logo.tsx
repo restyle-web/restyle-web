@@ -30,17 +30,13 @@ export function Logo({
         whileTap={{ scale: 0.95 }}
         className="flex items-center gap-2"
       >
-        <div
-          className={`flex items-center justify-center rounded-lg ${dark ? "bg-black" : "bg-black"} p-1.5`}
-        >
-          <Image
-            src="/logo/R..svg"
-            alt="Restyle Logo"
-            width={sizes[size].icon}
-            height={sizes[size].icon}
-            className="w-auto h-auto"
-          />
-        </div>
+        <Image
+          src={dark ? "/logo/restyle-white.png" : "/logo/restyle-black.png"}
+          alt="Restyle Logo"
+          width={sizes[size].icon}
+          height={sizes[size].icon}
+          className="w-auto h-auto"
+        />
         {withText && (
           <span
             className={`font-semibold tracking-tight ${sizes[size].text} ${dark ? "text-white" : "text-black"}`}

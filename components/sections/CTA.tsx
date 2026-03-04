@@ -76,7 +76,7 @@ export function CTA() {
           {!isSubmitted ? (
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col sm:flex-row gap-3 justify-center max-w-lg mx-auto"
+              className="flex flex-row gap-3 justify-center max-w-lg mx-auto"
             >
               <Input
                 type="email"
@@ -87,7 +87,7 @@ export function CTA() {
                 className="flex-1"
               />
               <MagneticButton strength={0.1}>
-                <Button type="submit" variant="primary" size="md">
+                <Button type="submit" variant="primary" size="md" className="whitespace-nowrap">
                   Get Early Access
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>

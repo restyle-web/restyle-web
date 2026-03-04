@@ -4,29 +4,26 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Logo } from "../ui/Logo";
 import { MagneticButton } from "../animations/MagneticButton";
-import { Instagram, Twitter, Linkedin } from "lucide-react";
+import { Instagram, Linkedin } from "lucide-react";
 
 const socialLinks = [
-  { icon: Instagram, href: "https://instagram.com/restyle", label: "Instagram" },
-  { icon: Twitter, href: "https://twitter.com/restyle", label: "Twitter" },
-  { icon: Linkedin, href: "https://linkedin.com/company/restyle", label: "LinkedIn" },
+  { icon: Instagram, href: "https://www.instagram.com/getrestyle/", label: "Instagram" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/getrestyle/", label: "LinkedIn" },
 ];
 
 const footerLinks = {
   Product: [
     { label: "Features", href: "/features" },
     { label: "How It Works", href: "/how-it-works" },
-    { label: "Pricing", href: "#" },
   ],
   Company: [
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
-    { label: "Careers", href: "#" },
   ],
   Legal: [
-    { label: "Privacy", href: "#" },
-    { label: "Terms", href: "#" },
-    { label: "Cookies", href: "#" },
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms of Service", href: "/terms" },
+    { label: "Cookie Policy", href: "/cookies" },
   ],
 };
 

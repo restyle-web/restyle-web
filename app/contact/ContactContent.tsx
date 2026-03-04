@@ -16,7 +16,6 @@ import {
   Send,
   CheckCircle,
   Instagram,
-  Twitter,
   Linkedin,
   HelpCircle,
   Briefcase,
@@ -28,8 +27,8 @@ const contactInfo = [
     icon: Mail,
     title: "Email Us",
     description: "For general inquiries",
-    value: "hello@restyle.app",
-    href: "mailto:hello@restyle.app",
+    value: "info@getrestyle.com",
+    href: "mailto:info@getrestyle.com",
   },
   {
     icon: MapPin,
@@ -71,9 +70,8 @@ const inquiryTypes = [
 ];
 
 const socialLinks = [
-  { icon: Instagram, href: "https://instagram.com/restyle", label: "Instagram" },
-  { icon: Twitter, href: "https://twitter.com/restyle", label: "Twitter" },
-  { icon: Linkedin, href: "https://linkedin.com/company/restyle", label: "LinkedIn" },
+  { icon: Instagram, href: "https://www.instagram.com/getrestyle/", label: "Instagram" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/getrestyle/", label: "LinkedIn" },
 ];
 
 export function ContactContent() {

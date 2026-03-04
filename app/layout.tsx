@@ -29,12 +29,6 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Restyle",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Restyle | Thrift Smarter. Style Better.",
-    description:
-      "Discover pre-loved fashion, connect with sellers, and build your sustainable wardrobe. Coming soon.",
-  },
 };
 
 export default function RootLayout({

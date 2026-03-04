@@ -104,7 +104,7 @@ export function Hero() {
             {/* Email signup form */}
             <FadeIn delay={0.8}>
               {!isSubmitted ? (
-                <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md">
+                <form onSubmit={handleSubmit} className="flex flex-row gap-3 max-w-md">
                   <Input
                     type="email"
                     placeholder="Enter your email"
@@ -114,7 +114,7 @@ export function Hero() {
                     className="flex-1"
                   />
                   <MagneticButton strength={0.1}>
-                    <Button type="submit" variant="primary" size="md">
+                    <Button type="submit" variant="primary" size="md" className="whitespace-nowrap">
                       Join Waitlist
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
