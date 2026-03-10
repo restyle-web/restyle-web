@@ -32,7 +32,7 @@ export function PhoneMockup({
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-7 bg-black rounded-b-2xl z-10" />
 
           {/* Screen content */}
-          <div className="relative aspect-[9/19.5] bg-white rounded-[2.3rem] overflow-hidden">
+          <div className="relative aspect-[9/19.5] bg-neutral-100 rounded-[2.3rem] overflow-hidden">
             <Image
               src={src}
               alt={alt}

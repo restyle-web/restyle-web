@@ -180,6 +180,7 @@ export function Hero() {
                   src="/mockups/store.svg"
                   alt="Restyle Store"
                   className="w-[220px] opacity-80"
+                  priority
                 />
               </FloatingElement>
             </motion.div>
@@ -196,6 +197,7 @@ export function Hero() {
                   src="/mockups/Intro Carousel.svg"
                   alt="Restyle Onboarding"
                   className="w-[220px] opacity-80"
+                  priority
                 />
               </FloatingElement>
             </motion.div>
