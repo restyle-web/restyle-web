@@ -5,11 +5,36 @@ import Image from "next/image";
 import { FadeIn } from "../animations/FadeIn";
 
 const mockups = [
-  { src: "/mockups/Intro Carousel.svg", alt: "Intro Screen", label: "Onboarding" },
-  { src: "/mockups/Intro Carousel (1).svg", alt: "Fashion Discovery", label: "Discover" },
-  { src: "/mockups/Intro Carousel (2).svg", alt: "Start Selling", label: "Sell" },
-  { src: "/mockups/Homepage.png", alt: "Home Feed", label: "Home" },
-  { src: "/mockups/Homepage.png", alt: "Marketplace Preview", label: "Marketplace" },
+  {
+    src: "/mockups/Intro Carousel.svg",
+    alt: "Intro Screen",
+    label: "Onboarding",
+    imageClassName: "object-fill",
+  },
+  {
+    src: "/mockups/Intro Carousel (1).svg",
+    alt: "Fashion Discovery",
+    label: "Discover",
+    imageClassName: "object-fill",
+  },
+  {
+    src: "/mockups/Intro Carousel (2).svg",
+    alt: "Start Selling",
+    label: "Sell",
+    imageClassName: "object-fill",
+  },
+  {
+    src: "/mockups/Homepage.png",
+    alt: "Home Feed",
+    label: "Home",
+    imageClassName: "object-contain object-center",
+  },
+  {
+    src: "/mockups/store.svg",
+    alt: "Marketplace Preview",
+    label: "Marketplace",
+    imageClassName: "object-contain object-center",
+  },
 ];
 
 export function AppShowcase() {
@@ -40,7 +65,7 @@ export function AppShowcase() {
       </div>
 
       <div className="relative">
-        <div className="flex gap-6 overflow-x-auto px-6 pb-6 snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex gap-6 overflow-x-auto overflow-y-hidden px-6 pt-2 pb-10 snap-x snap-mandatory touch-pan-x [overscroll-behavior-x:contain] [overscroll-behavior-y:none] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {mockups.map((mockup, index) => (
             <motion.div
               key={`${mockup.src}-${index}`}
@@ -62,12 +87,12 @@ export function AppShowcase() {
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-6 bg-zinc-900 rounded-b-xl z-10" />
 
                   {/* Screen content */}
-                  <div className="relative w-[220px] aspect-[9/19.5] bg-white">
+                  <div className="relative flex items-center justify-center w-[220px] aspect-[9/19.5] bg-white">
                     <Image
                       src={mockup.src}
                       alt={mockup.alt}
                       fill
-                      className="object-cover object-top"
+                      className={mockup.imageClassName}
                       sizes="220px"
                     />
                   </div>
