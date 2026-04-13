@@ -19,6 +19,24 @@ const waitlistAvatars = [
   { initials: "TL", label: "Taylor Lee", tone: "bg-neutral-100 text-neutral-900" },
 ];
 
+const heroPhoneScreens = {
+  main: {
+    src: "/mockups/Homepage.png",
+    alt: "Restyle home screen",
+    imageClassName: "object-cover object-top",
+  },
+  left: {
+    src: "/mockups/Intro Carousel (1).svg",
+    alt: "Restyle discovery",
+    imageClassName: "object-cover object-top",
+  },
+  right: {
+    src: "/mockups/Intro Carousel.svg",
+    alt: "Restyle onboarding",
+    imageClassName: "object-cover object-top",
+  },
+};
+
 export function Hero() {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -142,31 +160,40 @@ export function Hero() {
           {/* Right content - Phone mockups */}
           <div className="relative lg:h-[700px] flex items-center justify-center">
             {/* Background glow */}
-            <div className="absolute inset-0 bg-gradient-to-br from-black/5 to-transparent rounded-full blur-3xl" />
+            <div className="absolute inset-12 rounded-full bg-gradient-to-br from-black/5 via-black/[0.03] to-transparent blur-2xl" />
 
             {/* Main phone */}
-            <FloatingElement distance={8} duration={4}>
-              <PhoneMockup
-                src="/mockups/Homepage.png"
-                alt="Restyle Home Screen"
-                className="w-[280px] md:w-[320px] relative z-20"
-                priority
-                sizes="(max-width: 768px) 280px, 320px"
-              />
-            </FloatingElement>
+            <motion.div
+              className="relative z-10 transform-gpu"
+              initial={{ opacity: 0, y: 24, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <FloatingElement distance={7} duration={4.8}>
+                <PhoneMockup
+                  src={heroPhoneScreens.main.src}
+                  alt={heroPhoneScreens.main.alt}
+                  imageClassName={heroPhoneScreens.main.imageClassName}
+                  className="w-[280px] md:w-[320px]"
+                  priority
+                  sizes="(max-width: 768px) 280px, 320px"
+                />
+              </FloatingElement>
+            </motion.div>
 
             {/* Secondary phone (behind) */}
             <motion.div
-              className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 hidden lg:block"
-              initial={{ opacity: 0, x: -50, rotate: -8 }}
-              animate={{ opacity: 1, x: 0, rotate: -8 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
+              className="absolute -left-4 top-1/2 z-20 hidden transform-gpu lg:block"
+              initial={{ opacity: 0, x: -36, y: "-50%", rotate: -8 }}
+              animate={{ opacity: 1, x: 0, y: "-50%", rotate: -8 }}
+              transition={{ delay: 0.32, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
-              <FloatingElement distance={6} duration={5} delay={0.5}>
+              <FloatingElement distance={5} duration={5.4} delay={0.35}>
                 <PhoneMockup
-                  src="/mockups/Intro Carousel (1).svg"
-                  alt="Restyle Discovery"
-                  className="w-[220px] opacity-80"
+                  src={heroPhoneScreens.left.src}
+                  alt={heroPhoneScreens.left.alt}
+                  imageClassName={heroPhoneScreens.left.imageClassName}
+                  className="w-[210px]"
                   sizes="220px"
                 />
               </FloatingElement>
@@ -174,16 +201,17 @@ export function Hero() {
 
             {/* Tertiary phone (behind right) */}
             <motion.div
-              className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 hidden lg:block"
-              initial={{ opacity: 0, x: 50, rotate: 8 }}
-              animate={{ opacity: 1, x: 0, rotate: 8 }}
-              transition={{ delay: 0.7, duration: 0.8 }}
+              className="absolute -right-4 top-1/2 z-20 hidden transform-gpu lg:block"
+              initial={{ opacity: 0, x: 36, y: "-50%", rotate: 8 }}
+              animate={{ opacity: 1, x: 0, y: "-50%", rotate: 8 }}
+              transition={{ delay: 0.42, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
-              <FloatingElement distance={6} duration={4.5} delay={1}>
+              <FloatingElement distance={5} duration={4.9} delay={0.7}>
                 <PhoneMockup
-                  src="/mockups/Intro Carousel.svg"
-                  alt="Restyle Onboarding"
-                  className="w-[220px] opacity-80"
+                  src={heroPhoneScreens.right.src}
+                  alt={heroPhoneScreens.right.alt}
+                  imageClassName={heroPhoneScreens.right.imageClassName}
+                  className="w-[210px]"
                   sizes="220px"
                 />
               </FloatingElement>

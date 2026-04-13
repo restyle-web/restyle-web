@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 
 interface PhoneMockupProps {
@@ -9,6 +8,7 @@ interface PhoneMockupProps {
   className?: string;
   priority?: boolean;
   sizes?: string;
+  imageClassName?: string;
 }
 
 export function PhoneMockup({
@@ -17,15 +17,10 @@ export function PhoneMockup({
   className = "",
   priority = false,
   sizes = "(max-width: 768px) 280px, 320px",
+  imageClassName = "object-cover object-top",
 }: PhoneMockupProps) {
   return (
-    <motion.div
-      className={`relative ${className}`}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
-    >
+    <div className={`relative transform-gpu ${className}`}>
       {/* Phone frame */}
       <div className="relative bg-black rounded-[3rem] p-3 shadow-2xl shadow-black/20">
         {/* Screen bezel */}
@@ -39,13 +34,14 @@ export function PhoneMockup({
               src={src}
               alt={alt}
               fill
-              className="object-cover object-top"
+              className={imageClassName}
               priority={priority}
+              loading={priority ? "eager" : "lazy"}
               sizes={sizes}
             />
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

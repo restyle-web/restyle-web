@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import { ReactNode } from "react";
+import { useReducedMotion } from "framer-motion";
+import type { CSSProperties, ReactNode } from "react";
 
 interface FloatingElementProps {
   children: ReactNode;
@@ -21,29 +21,20 @@ export function FloatingElement({
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <motion.div
-      className={className}
-      style={{ willChange: "transform" }}
-      animate={
+    <div
+      className={prefersReducedMotion ? className : `${className} animate-hero-float`}
+      style={
         prefersReducedMotion
           ? undefined
-          : {
-              y: [-distance, distance, -distance],
-            }
-      }
-      transition={
-        prefersReducedMotion
-          ? undefined
-          : {
-              duration,
-              repeat: Infinity,
-              repeatType: "loop",
-              ease: "easeInOut",
-              delay,
-            }
+          : ({
+              "--float-distance": `${distance}px`,
+              "--float-distance-negative": `-${distance}px`,
+              "--float-duration": `${duration}s`,
+              "--float-delay": `${delay}s`,
+            } as CSSProperties)
       }
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

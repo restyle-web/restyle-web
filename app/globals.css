@@ -70,12 +70,41 @@ body {
   }
 }
 
+@keyframes heroFloat {
+  0%,
+  100% {
+    transform: translate3d(0, var(--float-distance-negative, -10px), 0);
+  }
+  50% {
+    transform: translate3d(0, var(--float-distance, 10px), 0);
+  }
+}
+
 .animate-fade-in {
   animation: fadeIn 0.5s ease-out forwards;
 }
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+.animate-hero-float {
+  display: block;
+  animation-name: heroFloat;
+  animation-duration: var(--float-duration, 4s);
+  animation-delay: var(--float-delay, 0s);
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-float {
+    animation: none;
+    transform: none;
+  }
 }
 
 /* Gradient text */
