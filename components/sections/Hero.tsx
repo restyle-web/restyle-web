@@ -201,11 +201,12 @@ export function Hero() {
             <div className="absolute inset-12 rounded-full bg-gradient-to-br from-black/5 via-black/[0.03] to-transparent blur-2xl" />
 
             {/* Mobile composition */}
-            <div className="relative flex h-[440px] w-full items-end justify-center lg:hidden">
+            <div className="relative flex h-[500px] w-full items-end justify-center lg:hidden">
+              <div className="absolute inset-x-10 bottom-10 h-48 rounded-full bg-black/[0.04] blur-3xl" />
               <motion.div
-                className="absolute left-0 bottom-8 z-10 transform-gpu"
-                initial={{ opacity: 0, x: -24, rotate: -10 }}
-                animate={{ opacity: 1, x: 0, rotate: -10 }}
+                className="absolute left-2 bottom-12 z-10 transform-gpu"
+                initial={{ opacity: 0, x: -24, y: 8, rotate: -12, scale: 0.96 }}
+                animate={{ opacity: 1, x: 0, y: 0, rotate: -12, scale: 1 }}
                 transition={{ delay: 0.24, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               >
                 <FloatingElement distance={4} duration={5.1} delay={0.2}>
@@ -213,8 +214,8 @@ export function Hero() {
                     src={heroPhoneScreens.left.src}
                     alt={heroPhoneScreens.left.alt}
                     imageClassName={heroPhoneScreens.left.imageClassName}
-                    className="w-[132px] sm:w-[150px]"
-                    sizes="(max-width: 640px) 132px, 150px"
+                    className="w-[156px] opacity-90 drop-shadow-[0_28px_45px_rgba(0,0,0,0.18)] sm:w-[176px]"
+                    sizes="(max-width: 640px) 156px, 176px"
                   />
                 </FloatingElement>
               </motion.div>
@@ -230,17 +231,17 @@ export function Hero() {
                     src={heroPhoneScreens.main.src}
                     alt={heroPhoneScreens.main.alt}
                     imageClassName={heroPhoneScreens.main.imageClassName}
-                    className="w-[220px] sm:w-[250px]"
+                    className="w-[236px] drop-shadow-[0_40px_70px_rgba(0,0,0,0.22)] sm:w-[268px]"
                     priority
-                    sizes="(max-width: 640px) 220px, 250px"
+                    sizes="(max-width: 640px) 236px, 268px"
                   />
                 </FloatingElement>
               </motion.div>
 
               <motion.div
-                className="absolute right-0 top-8 z-20 transform-gpu"
-                initial={{ opacity: 0, x: 24, rotate: 10 }}
-                animate={{ opacity: 1, x: 0, rotate: 10 }}
+                className="absolute right-2 bottom-24 z-20 transform-gpu"
+                initial={{ opacity: 0, x: 24, y: 8, rotate: 12, scale: 0.96 }}
+                animate={{ opacity: 1, x: 0, y: 0, rotate: 12, scale: 1 }}
                 transition={{ delay: 0.3, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               >
                 <FloatingElement distance={4} duration={5.3} delay={0.45}>
@@ -248,8 +249,8 @@ export function Hero() {
                     src={heroPhoneScreens.right.src}
                     alt={heroPhoneScreens.right.alt}
                     imageClassName={heroPhoneScreens.right.imageClassName}
-                    className="w-[132px] sm:w-[150px]"
-                    sizes="(max-width: 640px) 132px, 150px"
+                    className="w-[156px] opacity-95 drop-shadow-[0_28px_45px_rgba(0,0,0,0.18)] sm:w-[176px]"
+                    sizes="(max-width: 640px) 156px, 176px"
                   />
                 </FloatingElement>
               </motion.div>
