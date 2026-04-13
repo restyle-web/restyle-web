@@ -196,64 +196,119 @@ export function Hero() {
           </div>
 
           {/* Right content - Phone mockups */}
-          <div className="relative lg:h-[700px] flex items-center justify-center">
+          <div className="relative flex items-center justify-center lg:h-[700px]">
             {/* Background glow */}
             <div className="absolute inset-12 rounded-full bg-gradient-to-br from-black/5 via-black/[0.03] to-transparent blur-2xl" />
 
-            {/* Main phone */}
-            <motion.div
-              className="relative z-10 transform-gpu"
-              initial={{ opacity: 0, y: 24, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <FloatingElement distance={7} duration={4.8}>
-                <PhoneMockup
-                  src={heroPhoneScreens.main.src}
-                  alt={heroPhoneScreens.main.alt}
-                  imageClassName={heroPhoneScreens.main.imageClassName}
-                  className="w-[280px] md:w-[320px]"
-                  priority
-                  sizes="(max-width: 768px) 280px, 320px"
-                />
-              </FloatingElement>
-            </motion.div>
+            {/* Mobile composition */}
+            <div className="relative flex h-[440px] w-full items-end justify-center lg:hidden">
+              <motion.div
+                className="absolute left-0 bottom-8 z-10 transform-gpu"
+                initial={{ opacity: 0, x: -24, rotate: -10 }}
+                animate={{ opacity: 1, x: 0, rotate: -10 }}
+                transition={{ delay: 0.24, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <FloatingElement distance={4} duration={5.1} delay={0.2}>
+                  <PhoneMockup
+                    src={heroPhoneScreens.left.src}
+                    alt={heroPhoneScreens.left.alt}
+                    imageClassName={heroPhoneScreens.left.imageClassName}
+                    className="w-[132px] sm:w-[150px]"
+                    sizes="(max-width: 640px) 132px, 150px"
+                  />
+                </FloatingElement>
+              </motion.div>
 
-            {/* Secondary phone (behind) */}
-            <motion.div
-              className="absolute -left-4 top-1/2 z-20 hidden transform-gpu lg:block"
-              initial={{ opacity: 0, x: -36, y: "-50%", rotate: -8 }}
-              animate={{ opacity: 1, x: 0, y: "-50%", rotate: -8 }}
-              transition={{ delay: 0.32, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <FloatingElement distance={5} duration={5.4} delay={0.35}>
-                <PhoneMockup
-                  src={heroPhoneScreens.left.src}
-                  alt={heroPhoneScreens.left.alt}
-                  imageClassName={heroPhoneScreens.left.imageClassName}
-                  className="w-[210px]"
-                  sizes="220px"
-                />
-              </FloatingElement>
-            </motion.div>
+              <motion.div
+                className="relative z-30 transform-gpu"
+                initial={{ opacity: 0, y: 24, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ delay: 0.2, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <FloatingElement distance={6} duration={4.8}>
+                  <PhoneMockup
+                    src={heroPhoneScreens.main.src}
+                    alt={heroPhoneScreens.main.alt}
+                    imageClassName={heroPhoneScreens.main.imageClassName}
+                    className="w-[220px] sm:w-[250px]"
+                    priority
+                    sizes="(max-width: 640px) 220px, 250px"
+                  />
+                </FloatingElement>
+              </motion.div>
 
-            {/* Tertiary phone (behind right) */}
-            <motion.div
-              className="absolute -right-4 top-1/2 z-20 hidden transform-gpu lg:block"
-              initial={{ opacity: 0, x: 36, y: "-50%", rotate: 8 }}
-              animate={{ opacity: 1, x: 0, y: "-50%", rotate: 8 }}
-              transition={{ delay: 0.42, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <FloatingElement distance={5} duration={4.9} delay={0.7}>
-                <PhoneMockup
-                  src={heroPhoneScreens.right.src}
-                  alt={heroPhoneScreens.right.alt}
-                  imageClassName={heroPhoneScreens.right.imageClassName}
-                  className="w-[210px]"
-                  sizes="220px"
-                />
-              </FloatingElement>
-            </motion.div>
+              <motion.div
+                className="absolute right-0 top-8 z-20 transform-gpu"
+                initial={{ opacity: 0, x: 24, rotate: 10 }}
+                animate={{ opacity: 1, x: 0, rotate: 10 }}
+                transition={{ delay: 0.3, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <FloatingElement distance={4} duration={5.3} delay={0.45}>
+                  <PhoneMockup
+                    src={heroPhoneScreens.right.src}
+                    alt={heroPhoneScreens.right.alt}
+                    imageClassName={heroPhoneScreens.right.imageClassName}
+                    className="w-[132px] sm:w-[150px]"
+                    sizes="(max-width: 640px) 132px, 150px"
+                  />
+                </FloatingElement>
+              </motion.div>
+            </div>
+
+            {/* Desktop composition */}
+            <div className="relative hidden h-full w-full items-center justify-center lg:flex">
+              <motion.div
+                className="relative z-10 transform-gpu"
+                initial={{ opacity: 0, y: 24, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ delay: 0.2, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <FloatingElement distance={7} duration={4.8}>
+                  <PhoneMockup
+                    src={heroPhoneScreens.main.src}
+                    alt={heroPhoneScreens.main.alt}
+                    imageClassName={heroPhoneScreens.main.imageClassName}
+                    className="w-[280px] md:w-[320px]"
+                    priority
+                    sizes="(max-width: 768px) 280px, 320px"
+                  />
+                </FloatingElement>
+              </motion.div>
+
+              <motion.div
+                className="absolute -left-4 top-1/2 z-20 transform-gpu"
+                initial={{ opacity: 0, x: -36, y: "-50%", rotate: -8 }}
+                animate={{ opacity: 1, x: 0, y: "-50%", rotate: -8 }}
+                transition={{ delay: 0.32, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <FloatingElement distance={5} duration={5.4} delay={0.35}>
+                  <PhoneMockup
+                    src={heroPhoneScreens.left.src}
+                    alt={heroPhoneScreens.left.alt}
+                    imageClassName={heroPhoneScreens.left.imageClassName}
+                    className="w-[210px]"
+                    sizes="220px"
+                  />
+                </FloatingElement>
+              </motion.div>
+
+              <motion.div
+                className="absolute -right-4 top-1/2 z-20 transform-gpu"
+                initial={{ opacity: 0, x: 36, y: "-50%", rotate: 8 }}
+                animate={{ opacity: 1, x: 0, y: "-50%", rotate: 8 }}
+                transition={{ delay: 0.42, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <FloatingElement distance={5} duration={4.9} delay={0.7}>
+                  <PhoneMockup
+                    src={heroPhoneScreens.right.src}
+                    alt={heroPhoneScreens.right.alt}
+                    imageClassName={heroPhoneScreens.right.imageClassName}
+                    className="w-[210px]"
+                    sizes="220px"
+                  />
+                </FloatingElement>
+              </motion.div>
+            </div>
           </div>
         </div>
       </div>
