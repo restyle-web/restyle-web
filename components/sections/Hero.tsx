@@ -12,6 +12,13 @@ import { Badge } from "../ui/Badge";
 import { PhoneMockup } from "../ui/PhoneMockup";
 import { ArrowRight, Sparkles } from "lucide-react";
 
+const waitlistAvatars = [
+  { initials: "AM", label: "Ava Martinez", tone: "bg-stone-900 text-white" },
+  { initials: "JK", label: "Jordan Kim", tone: "bg-stone-200 text-stone-900" },
+  { initials: "SR", label: "Sofia Rahman", tone: "bg-zinc-800 text-white" },
+  { initials: "TL", label: "Taylor Lee", tone: "bg-neutral-100 text-neutral-900" },
+];
+
 export function Hero() {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -113,11 +120,15 @@ export function Hero() {
             <FadeIn delay={1} className="mt-8">
               <div className="flex items-center gap-4">
                 <div className="flex -space-x-2">
-                  {[1, 2, 3, 4].map((i) => (
+                  {waitlistAvatars.map((avatar) => (
                     <div
-                      key={i}
-                      className="w-8 h-8 rounded-full bg-gradient-to-br from-black/10 to-black/5 border-2 border-white"
-                    />
+                      key={avatar.label}
+                      aria-label={avatar.label}
+                      title={avatar.label}
+                      className={`flex h-8 w-8 items-center justify-center rounded-full border-2 border-white text-[10px] font-semibold tracking-tight shadow-sm ${avatar.tone}`}
+                    >
+                      {avatar.initials}
+                    </div>
                   ))}
                 </div>
                 <p className="text-sm text-black/50">
