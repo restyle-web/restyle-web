@@ -167,7 +167,7 @@ export function Navbar() {
                     className="group relative inline-flex items-center gap-2 px-5 py-2.5 bg-black text-white text-sm font-medium rounded-full overflow-hidden transition-all duration-300 hover:pr-8"
                   >
                     <Sparkles className="w-4 h-4" />
-                    <span>Join Waitlist</span>
+                    <span>Join the Waitlist</span>
                     <ArrowRight className="w-4 h-4 absolute right-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                   </Link>
                 </motion.div>
@@ -293,7 +293,7 @@ export function Navbar() {
                       className="flex items-center justify-center gap-2 w-full px-6 py-4 bg-black text-white text-lg font-medium rounded-xl"
                     >
                       <Sparkles className="w-5 h-5" />
-                      Join Waitlist
+                      Join the Waitlist
                     </Link>
                     <p className="text-center text-sm text-black/40 mt-4">
                       Be first to know when we launch

@@ -115,7 +115,7 @@ export function Hero() {
                   />
                   <MagneticButton strength={0.1}>
                     <Button type="submit" variant="primary" size="md" className="whitespace-nowrap">
-                      Join Waitlist
+                      Join the Waitlist
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </MagneticButton>
