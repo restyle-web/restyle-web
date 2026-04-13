@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import { PageHeader } from "@/components/ui/PageHeader";
@@ -38,7 +38,7 @@ const mainFeatures = [
     title: "Direct Messaging & Offers",
     description:
       "Connect directly with sellers through our built-in chat. Ask questions, negotiate prices, and send offers. Our smart offer system lets you propose your price and track all your negotiations in one place.",
-    mockup: "/mockups/store.svg",
+    mockup: "/mockups/Intro Carousel (2).svg",
   },
   {
     icon: Search,
@@ -189,6 +189,7 @@ function AnimatedPhoneMockup({
                   alt={alt}
                   fill
                   className="object-cover object-top"
+                  sizes="(max-width: 768px) 280px, 320px"
                 />
               </div>
             </div>
@@ -281,24 +282,14 @@ export function FeaturesContent() {
   const gridRef = useRef(null);
   const isGridInView = useInView(gridRef, { once: true, margin: "-100px" });
 
-  // Parallax effect for header
-  const headerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: headerRef,
-    offset: ["start start", "end start"],
-  });
-  const headerY = useTransform(scrollYProgress, [0, 1], [0, 100]);
-
   return (
     <>
-      <motion.div ref={headerRef} style={{ y: headerY }}>
-        <PageHeader
-          badge="Features"
-          title="Everything you need"
-          titleHighlight="to thrift with confidence"
-          description="A complete platform designed for the modern thrifter. Powerful tools for buying, selling, and discovering sustainable fashion."
-        />
-      </motion.div>
+      <PageHeader
+        badge="Features"
+        title="Everything you need"
+        titleHighlight="to thrift with confidence"
+        description="A complete platform designed for the modern thrifter. Powerful tools for buying, selling, and discovering sustainable fashion."
+      />
 
       {/* Main Features with Mockups */}
       <section className="py-24 overflow-hidden">
@@ -388,29 +379,15 @@ export function FeaturesContent() {
 
       {/* CTA Section */}
       <section className="py-24 relative overflow-hidden">
-        {/* Background animation */}
-        <motion.div
-          className="absolute inset-0 -z-10"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          <motion.div
+        <div className="absolute inset-0 -z-10">
+          <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full"
             style={{
               background:
                 "radial-gradient(circle, rgba(0,0,0,0.03) 0%, transparent 70%)",
             }}
-            animate={{
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
           />
-        </motion.div>
+        </div>
 
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div

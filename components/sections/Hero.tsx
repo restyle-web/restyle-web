@@ -1,9 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
 import { SplitText } from "../animations/SplitText";
-import { BlurText } from "../animations/BlurText";
 import { FadeIn } from "../animations/FadeIn";
 import { FloatingElement } from "../animations/FloatingElement";
 import { MagneticButton } from "../animations/MagneticButton";
@@ -16,6 +15,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 export function Hero() {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,42 +27,17 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen pt-32 pb-20 overflow-hidden">
-      {/* Animated background gradients */}
       <div className="absolute inset-0 -z-10">
-        <motion.div
+        <div
           className="absolute top-0 right-0 w-[800px] h-[800px] rounded-full opacity-[0.03]"
           style={{
-            background:
-              "radial-gradient(circle, black 0%, transparent 70%)",
-          }}
-          animate={{
-            scale: [1, 1.1, 1],
-            x: [0, 30, 0],
-            y: [0, -20, 0],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            repeatType: "loop",
-            ease: "easeInOut",
+            background: "radial-gradient(circle, black 0%, transparent 70%)",
           }}
         />
-        <motion.div
+        <div
           className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full opacity-[0.02]"
           style={{
-            background:
-              "radial-gradient(circle, black 0%, transparent 70%)",
-          }}
-          animate={{
-            scale: [1.1, 1, 1.1],
-            x: [0, -20, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            repeatType: "loop",
-            ease: "easeInOut",
+            background: "radial-gradient(circle, black 0%, transparent 70%)",
           }}
         />
       </div>
@@ -165,6 +140,7 @@ export function Hero() {
                 alt="Restyle Home Screen"
                 className="w-[280px] md:w-[320px] relative z-20"
                 priority
+                sizes="(max-width: 768px) 280px, 320px"
               />
             </FloatingElement>
 
@@ -177,10 +153,10 @@ export function Hero() {
             >
               <FloatingElement distance={6} duration={5} delay={0.5}>
                 <PhoneMockup
-                  src="/mockups/store.svg"
-                  alt="Restyle Store"
+                  src="/mockups/Intro Carousel (1).svg"
+                  alt="Restyle Discovery"
                   className="w-[220px] opacity-80"
-                  priority
+                  sizes="220px"
                 />
               </FloatingElement>
             </motion.div>
@@ -197,7 +173,7 @@ export function Hero() {
                   src="/mockups/Intro Carousel.svg"
                   alt="Restyle Onboarding"
                   className="w-[220px] opacity-80"
-                  priority
+                  sizes="220px"
                 />
               </FloatingElement>
             </motion.div>
@@ -206,24 +182,26 @@ export function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-      >
+      {!prefersReducedMotion && (
         <motion.div
-          className="w-6 h-10 rounded-full border-2 border-black/20 flex items-start justify-center p-2"
-          animate={{ y: [0, 5, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
         >
           <motion.div
-            className="w-1 h-2 bg-black/40 rounded-full"
-            animate={{ y: [0, 8, 0], opacity: [1, 0.3, 1] }}
+            className="w-6 h-10 rounded-full border-2 border-black/20 flex items-start justify-center p-2"
+            animate={{ y: [0, 5, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
-          />
+          >
+            <motion.div
+              className="w-1 h-2 bg-black/40 rounded-full"
+              animate={{ y: [0, 8, 0], opacity: [1, 0.3, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            />
+          </motion.div>
         </motion.div>
-      </motion.div>
+      )}
     </section>
   );
 }

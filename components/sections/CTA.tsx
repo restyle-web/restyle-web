@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { FadeIn } from "../animations/FadeIn";
-import { MagneticButton } from "../animations/MagneticButton";
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
 import { ArrowRight, Sparkles } from "lucide-react";
@@ -22,22 +21,11 @@ export function CTA() {
 
   return (
     <section className="py-24 relative overflow-hidden">
-      {/* Background elements */}
       <div className="absolute inset-0 -z-10">
-        <motion.div
+        <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] rounded-full opacity-[0.03]"
           style={{
-            background:
-              "radial-gradient(circle, black 0%, transparent 70%)",
-          }}
-          animate={{
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            repeatType: "loop",
-            ease: "easeInOut",
+            background: "radial-gradient(circle, black 0%, transparent 70%)",
           }}
         />
       </div>
@@ -86,12 +74,10 @@ export function CTA() {
                 required
                 className="flex-1"
               />
-              <MagneticButton strength={0.1}>
-                <Button type="submit" variant="primary" size="md" className="whitespace-nowrap">
-                  Get Early Access
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </MagneticButton>
+              <Button type="submit" variant="primary" size="md" className="whitespace-nowrap">
+                Get Early Access
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
             </form>
           ) : (
             <motion.div

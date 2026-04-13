@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Logo } from "../ui/Logo";
-import { MagneticButton } from "../animations/MagneticButton";
 import { Instagram, Linkedin } from "lucide-react";
 
 const socialLinks = [
@@ -43,19 +42,18 @@ export function Footer() {
             {/* Social links */}
             <div className="flex gap-3">
               {socialLinks.map((social) => (
-                <MagneticButton key={social.label} strength={0.2}>
-                  <motion.a
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    aria-label={social.label}
-                  >
-                    <social.icon className="w-5 h-5" />
-                  </motion.a>
-                </MagneticButton>
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  aria-label={social.label}
+                >
+                  <social.icon className="w-5 h-5" />
+                </motion.a>
               ))}
             </div>
           </div>
@@ -96,13 +94,7 @@ export function Footer() {
           </p>
 
           <div className="flex items-center gap-2 text-sm text-white/40">
-            <span>Made with</span>
-            <motion.span
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1, repeat: Infinity }}
-            >
-              ❤️
-            </motion.span>
+            <span>Made with ❤️</span>
             <span>for sustainable fashion</span>
           </div>
         </div>

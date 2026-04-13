@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { FadeIn } from "../animations/FadeIn";
 
@@ -10,18 +9,10 @@ const mockups = [
   { src: "/mockups/Intro Carousel (1).svg", alt: "Fashion Discovery", label: "Discover" },
   { src: "/mockups/Intro Carousel (2).svg", alt: "Start Selling", label: "Sell" },
   { src: "/mockups/Homepage.png", alt: "Home Feed", label: "Home" },
-  { src: "/mockups/store.svg", alt: "Store Profile", label: "Stores" },
+  { src: "/mockups/Homepage.png", alt: "Marketplace Preview", label: "Marketplace" },
 ];
 
 export function AppShowcase() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-25%"]);
-
   return (
     <section className="py-24 overflow-hidden bg-black">
       <div className="max-w-7xl mx-auto px-6 mb-16">
@@ -48,19 +39,18 @@ export function AppShowcase() {
         </div>
       </div>
 
-      {/* Scrolling mockups */}
-      <div ref={containerRef} className="relative">
-        <motion.div style={{ x }} className="flex gap-6 px-6">
-          {[...mockups, ...mockups].map((mockup, index) => (
+      <div className="relative">
+        <div className="flex gap-6 overflow-x-auto px-6 pb-6 snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          {mockups.map((mockup, index) => (
             <motion.div
               key={`${mockup.src}-${index}`}
-              className="relative flex-shrink-0 group"
+              className="relative flex-shrink-0 group snap-center"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{
                 duration: 0.6,
-                delay: (index % mockups.length) * 0.1,
+                delay: index * 0.08,
                 ease: [0.25, 0.4, 0.25, 1],
               }}
             >
@@ -78,6 +68,7 @@ export function AppShowcase() {
                       alt={mockup.alt}
                       fill
                       className="object-cover object-top"
+                      sizes="220px"
                     />
                   </div>
                 </div>
@@ -91,7 +82,7 @@ export function AppShowcase() {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Gradient overlays */}
         <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent pointer-events-none" />

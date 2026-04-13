@@ -8,6 +8,7 @@ interface PhoneMockupProps {
   alt: string;
   className?: string;
   priority?: boolean;
+  sizes?: string;
 }
 
 export function PhoneMockup({
@@ -15,6 +16,7 @@ export function PhoneMockup({
   alt,
   className = "",
   priority = false,
+  sizes = "(max-width: 768px) 280px, 320px",
 }: PhoneMockupProps) {
   return (
     <motion.div
@@ -39,6 +41,7 @@ export function PhoneMockup({
               fill
               className="object-cover object-top"
               priority={priority}
+              sizes={sizes}
             />
           </div>
         </div>
