@@ -40,13 +40,44 @@ const heroPhoneScreens = {
 export function Hero() {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const prefersReducedMotion = useReducedMotion();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
+    if (!email || isSubmitting) {
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+      setSubmitError("");
+
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          source: "hero",
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        setSubmitError(data.error || "Unable to join the waitlist right now.");
+        return;
+      }
+
       setIsSubmitted(true);
       setEmail("");
+    } catch {
+      setSubmitError("Unable to join the waitlist right now.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -111,11 +142,18 @@ export function Hero() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
+                    error={submitError || undefined}
                     className="flex-1"
                   />
                   <MagneticButton strength={0.1}>
-                    <Button type="submit" variant="primary" size="md" className="whitespace-nowrap">
-                      Join the Waitlist
+                    <Button
+                      type="submit"
+                      variant="primary"
+                      size="md"
+                      disabled={isSubmitting}
+                      className="whitespace-nowrap"
+                    >
+                      {isSubmitting ? "Joining..." : "Join the Waitlist"}
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </MagneticButton>
