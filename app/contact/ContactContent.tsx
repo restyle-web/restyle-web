@@ -82,12 +82,44 @@ export function ContactContent() {
     message: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [selectedType, setSelectedType] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    setIsSubmitted(true);
+    if (isSubmitting) {
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+      setSubmitError("");
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          inquiryType: selectedType ?? "General Inquiry",
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        setSubmitError(data.error || "We couldn't send your message right now.");
+        return;
+      }
+
+      setIsSubmitted(true);
+    } catch {
+      setSubmitError("We couldn't send your message right now.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (
@@ -146,16 +178,16 @@ export function ContactContent() {
               <FadeIn>
                 <h2 className="text-2xl font-bold mb-2">How can we help?</h2>
                 <p className="text-black/60 mb-8">
-                  Select a topic to help us route your message to the right team.
+                  Select an inquiry type so we can route your message to the right team.
                 </p>
               </FadeIn>
 
               <div className="grid grid-cols-2 gap-4 mb-8">
                 {inquiryTypes.map((type, index) => (
-                  <FadeIn key={type.title} delay={index * 0.1}>
+                  <FadeIn key={type.title} delay={index * 0.1} className="h-full">
                     <motion.button
                       onClick={() => setSelectedType(type.title)}
-                      className={`p-4 rounded-xl border-2 text-left transition-all duration-300 ${
+                      className={`w-full h-full p-4 rounded-xl border-2 text-left transition-all duration-300 ${
                         selectedType === type.title
                           ? "border-black bg-black text-white"
                           : "border-black/10 bg-white hover:border-black/30"
@@ -247,11 +279,15 @@ export function ContactContent() {
                       <Input
                         label="Subject"
                         name="subject"
-                        placeholder="What's this about?"
+                        placeholder="What&apos;s this about?"
                         value={formData.subject}
                         onChange={handleInputChange}
                         required
                       />
+
+                      <div className="rounded-xl border border-black/10 bg-black/[0.02] px-4 py-3 text-sm text-black/60">
+                        Inquiry Type: <span className="font-medium text-black">{selectedType ?? "General Inquiry"}</span>
+                      </div>
 
                       <div>
                         <label className="block text-sm font-medium text-black/70 mb-2">
@@ -269,14 +305,19 @@ export function ContactContent() {
                         />
                       </div>
 
+                      {submitError ? (
+                        <p className="text-sm text-red-500">{submitError}</p>
+                      ) : null}
+
                       <MagneticButton strength={0.1} className="w-full">
                         <Button
                           type="submit"
                           variant="primary"
                           size="lg"
+                          disabled={isSubmitting}
                           className="w-full"
                         >
-                          Send Message
+                          {isSubmitting ? "Sending..." : "Send Message"}
                           <Send className="w-4 h-4 ml-2" />
                         </Button>
                       </MagneticButton>
@@ -302,13 +343,15 @@ export function ContactContent() {
                       </motion.div>
                       <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
                       <p className="text-black/60 mb-6">
-                        Thanks for reaching out. We'll get back to you within
+                        Thanks for reaching out. We&apos;ll get back to you within
                         24-48 hours.
                       </p>
                       <Button
                         variant="outline"
                         onClick={() => {
                           setIsSubmitted(false);
+                          setSubmitError("");
+                          setSelectedType(null);
                           setFormData({
                             name: "",
                             email: "",
