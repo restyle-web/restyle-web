@@ -8,51 +8,51 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Sarah M.",
+    name: "Ayesha K.",
     role: "Fashion Enthusiast",
-    avatar: "S",
-    content:
-      "Finally, a thrift app that actually gets it! The UI is gorgeous and finding unique pieces has never been easier. Can't wait for launch!",
-    rating: 5,
-  },
-  {
-    name: "James K.",
-    role: "Vintage Seller",
-    avatar: "J",
-    content:
-      "As someone who sells vintage clothing, I'm excited about the seller tools. The offer system and direct chat will be game-changers.",
-    rating: 5,
-  },
-  {
-    name: "Priya R.",
-    role: "Sustainable Fashion Advocate",
-    avatar: "P",
-    content:
-      "Love the mission behind Restyle. Making sustainable fashion accessible and stylish is exactly what we need. Signed up immediately!",
-    rating: 5,
-  },
-  {
-    name: "Alex T.",
-    role: "Streetwear Collector",
     avatar: "A",
     content:
-      "The filter system looks incredible. Being able to search by specific sizes, brands, and conditions will save so much time hunting for grails.",
+      "The preview already feels polished and thoughtful. If the launch experience is this smooth, I can see Restyle becoming my go-to thrifting app.",
     rating: 5,
   },
   {
-    name: "Maya L.",
+    name: "Hamza R.",
+    role: "Vintage Seller",
+    avatar: "H",
+    content:
+      "I haven&apos;t seen many pre-launch thrift platforms think this much about sellers. The offer flow and chat features already look really promising.",
+    rating: 5,
+  },
+  {
+    name: "Sana A.",
+    role: "Sustainable Fashion Advocate",
+    avatar: "S",
+    content:
+      "I signed up for the waitlist because the mission is clear from the start. Restyle feels like it could make secondhand fashion more approachable for a lot of people.",
+    rating: 5,
+  },
+  {
+    name: "Bilal M.",
+    role: "Streetwear Collector",
+    avatar: "B",
+    content:
+      "Even from the early screens, the search and filtering look strong. That&apos;s the part that usually makes or breaks a thrift app for me.",
+    rating: 4,
+  },
+  {
+    name: "Hira S.",
     role: "Thrift Beginner",
-    avatar: "M",
+    avatar: "H",
     content:
-      "The guest mode is perfect for exploring before committing. And the review system gives me confidence in buying from new sellers.",
+      "As someone new to thrifting, I like that the product already feels welcoming instead of overwhelming. It makes me want to try it when it launches.",
     rating: 5,
   },
   {
-    name: "David H.",
+    name: "Usman F.",
     role: "Reseller",
-    avatar: "D",
+    avatar: "U",
     content:
-      "In-app checkout with courier selection? That's huge. No more back-and-forth about shipping. This is going to streamline everything.",
+      "The idea of having checkout and delivery built in from day one is exciting. If they execute well, this could save sellers a lot of time.",
     rating: 5,
   },
 ];
@@ -73,15 +73,15 @@ export function Testimonials() {
           </FadeIn>
           <FadeIn delay={0.1}>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-              People are excited
+              Early interest is building
               <br />
-              <span className="text-black/30">and so are we</span>
+              <span className="text-black/30">ahead of launch</span>
             </h2>
           </FadeIn>
           <FadeIn delay={0.2}>
             <p className="text-lg text-black/60 max-w-2xl mx-auto">
-              Here&apos;s what our early community members are saying about Restyle.
-              Join the waitlist to be part of the journey.
+              Here&apos;s what early supporters are saying after previewing Restyle.
+              Join the waitlist to be among the first to try it when we launch.
             </p>
           </FadeIn>
         </div>
